@@ -1,6 +1,8 @@
 # java11-spliterator-forkjoin
+Fork-join using spliterator and parallel streams.
 
 _Reference_: https://java-8-tips.readthedocs.io/en/stable/parallelization.html  
+
 For more info about spliterators please refer my other github project:
 * https://github.com/mtumilowicz/java11-spliterator
 
