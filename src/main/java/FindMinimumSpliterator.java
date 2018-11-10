@@ -7,7 +7,7 @@ import static java.util.Objects.nonNull;
 
 /**
  * Created by mtumilowicz on 2018-11-10.
- */ 
+ */
 class FindMinimumSpliterator implements Spliterator.OfInt {
     private int left;
     private int right;
@@ -18,7 +18,7 @@ class FindMinimumSpliterator implements Spliterator.OfInt {
         Preconditions.checkArgument(nonNull(arr));
         Preconditions.checkArgument(left >= 0);
         Preconditions.checkArgument(right <= arr.length);
-        
+
         this.arr = arr;
         this.left = left;
         this.right = right;
@@ -53,6 +53,6 @@ class FindMinimumSpliterator implements Spliterator.OfInt {
 
     @Override
     public int characteristics() {
-        return ORDERED | SIZED | IMMUTABLE | SUBSIZED;
+        return IMMUTABLE | NONNULL | ORDERED | SIZED | SUBSIZED;
     }
 }

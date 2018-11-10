@@ -11,3 +11,31 @@ but using spliterator + parallel streams instead of fork-join API.
 # project description
 Find minimum in the stream of ints in a parallel way with full
 control over splitting.
+
+1. We have `int[] arr`, so we will be using `Spliterator.OfInt`
+(it removes overhead of autoboxing).
+1. We implement `Spliterator.OfInt` in `FindMinimumSpliterator`
+in the same way like fork-join, but note that:
+    * splitting tear away part of `this` (so `this` spliterator
+    has to be mutable)
+    * `trySplit()` **returns** 
+        * a Spliterator covering some portion of the elements
+        * or null if this spliterator cannot be split
+1. Used characteristics:
+    * `IMMUTABLE` - Characteristic value signifying that the element 
+    source cannot be structurally modified; that is, elements cannot 
+    be added, replaced, or removed, so such changes cannot occur 
+    during traversal.
+    * `NONNULL` - Characteristic value signifying that the source 
+    guarantees that encountered elements will not be null.
+    * `ORDERED` - Characteristic value signifying that an encounter 
+    order is defined for elements.
+    * `SIZED` - Characteristic value signifying that the value 
+    returned from `estimateSize()` prior to traversal or splitting 
+    represents a finite size that, in the absence of structural 
+    source modification, represents an exact count of the number 
+    of elements that would be encountered by a complete traversal.
+    * `SUBSIZED` - Characteristic value signifying that all 
+    Spliterators resulting from trySplit() will be both `SIZED` and 
+    `SUBSIZED` (This means that all child Spliterators, whether direct 
+    or indirect, will `SIZED`).
