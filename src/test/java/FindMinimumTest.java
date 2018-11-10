@@ -2,7 +2,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Random;
-import java.util.stream.StreamSupport;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,9 +25,8 @@ public class FindMinimumTest {
     }
 
     @Test
-    public void xxx() {
-        int minimum = StreamSupport.intStream(new FindMinimumSpliterator(arr, 0, arr.length - 1), true)
-                .min()
+    public void find() {
+        int minimum = FindMinimum.find(arr)
                 .orElseThrow();
         
         assertThat(minimum, is(min));
