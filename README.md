@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-spliterator-forkjoin.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-spliterator-forkjoin)
+
 # java11-spliterator-forkjoin
 Fork-join using spliterator and parallel streams.
 
