@@ -39,3 +39,14 @@ in the same way like fork-join, but note that:
     Spliterators resulting from trySplit() will be both `SIZED` and 
     `SUBSIZED` (This means that all child Spliterators, whether direct 
     or indirect, will `SIZED`).
+1. Constructing parallel `IntStream` from `Spliterator.OfInt`:
+    ```
+    IntStream intStream = StreamSupport.intStream(new FindMinimumSpliterator(array, 0, array.length - 1), true);
+    ```
+1. On the `IntStream` we found minimum calling `min()` method
+    ```
+    OptionalInt minimum = intStream.min();
+    ```
+
+# tests
+Tested in `FindMinimumTest` over array of `100_000` random elements.
